@@ -1,8 +1,8 @@
 name: DeathPoint
 main: net.fantastisk.deathpoint.DeathPoint
-version: 0.2
+version: 0.3
 author: Shane Drobnick
 commands: 
-  feedme:
-    description: Feed me!
-    aliases: [feed,hungry]
+   died:
+    description: Died list
+    aliases: [died,ded,idied,dead,deaths]

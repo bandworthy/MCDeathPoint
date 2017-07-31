@@ -37,9 +37,8 @@ public class DeathPoint extends JavaPlugin implements Listener
 	       
 	       //creating death object
 	       DeathObject death = new DeathObject(player.getName(),playerLocation[0],playerLocation[1],playerLocation[2]);
-	       
 	       deathList.add(death);
-	       sendtoConsole("DeathList has: "+deathList.size()+" Entrys");
+	       //sendtoConsole("DeathList has: "+deathList.size()+" Entrys");
 
 	       
 	       player.sendMessage(ChatColor.RED+" "+ player.getName()+" Your death location was "+playerLocation[0]+" "+playerLocation[1]+" "+playerLocation[2]);
@@ -56,34 +55,36 @@ public class DeathPoint extends JavaPlugin implements Listener
 		
 		command.getName();
 		
-		if(command.getName().equalsIgnoreCase("feedme"))
+		if(command.getName().equalsIgnoreCase("died"))
 		{
 			
 			if ( sender instanceof Player)
 			{	
 				Player player = (Player) sender;
 				player.setFoodLevel(20);
-				player.sendMessage(ChatColor.GREEN + "You have been feed!");
+				//player.sendMessage(ChatColor.GREEN + "You have been feed!");
 				
-				player.sendMessage(Integer.toString(deathList.size()));
-				   /*
+				//player.sendMessage(Integer.toString(deathList.size()));
+				   
+				/*
 			       for (DeathObject temp : deathList)
 			       {
-			    	   player.sendMessage(temp.getString());
+			    	   player.sendMessage(ChatColor.BLUE + temp.getString());
 			       }
-			       */
+			    */   
 				
-				   /*
+				   
 			       for(int i = 0; i < deathList.size(); i++)
 			       {
-			    	   player.sendMessage(deathList.get(i).getName());
+			    	   int temp = i + 1;
+			    	   player.sendMessage(ChatColor.BLUE+" "+temp+":"+ deathList.get(i).getString());
 			       }
-			       */
+			       
 				
 			}
 			else
 			{
-				sender.sendMessage(ChatColor.RED + "You must be a player to be fed!");
+				sender.sendMessage(ChatColor.RED + "You must be a player to be deded!");
 
 			}
 			return true;
