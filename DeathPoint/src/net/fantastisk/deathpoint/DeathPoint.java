@@ -1,4 +1,7 @@
 package net.fantastisk.deathpoint;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -14,11 +17,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class DeathPoint extends JavaPlugin implements Listener
 {
+	//array to store deaths
+	List<DeathObject> deathList = new ArrayList<DeathObject>();
+	
 	
 	//detects player has died and sends message
 	@EventHandler(priority=EventPriority.NORMAL)
 	public void OnDeath(EntityDeathEvent e)
 	{ 
+
 		
 		if(e.getEntity() instanceof Player)
 		{
@@ -27,6 +34,14 @@ public class DeathPoint extends JavaPlugin implements Listener
 	        
 	        
 	       String[] playerLocation =  formatdouble(playerspot.getX(),playerspot.getY(),playerspot.getZ());
+	       
+	       //creating death object
+	       DeathObject death = new DeathObject(player.getName(),playerLocation[0],playerLocation[1],playerLocation[2]);
+	       
+	       deathList.add(death);
+	       sendtoConsole("DeathList has: "+deathList.size()+" Entrys");
+
+	       
 	       player.sendMessage(ChatColor.RED+" "+ player.getName()+" Your death location was "+playerLocation[0]+" "+playerLocation[1]+" "+playerLocation[2]);
 	       //.sendMessage(player.getName()+" Your death location was "+playerLocation[0]+" "+playerLocation[1]+" "+playerLocation[2]);)
 	       sendtoConsole(player.getName()+" died! location was "+playerLocation[0]+" "+playerLocation[1]+" "+playerLocation[2]); 
@@ -49,6 +64,22 @@ public class DeathPoint extends JavaPlugin implements Listener
 				Player player = (Player) sender;
 				player.setFoodLevel(20);
 				player.sendMessage(ChatColor.GREEN + "You have been feed!");
+				
+				player.sendMessage(Integer.toString(deathList.size()));
+				   /*
+			       for (DeathObject temp : deathList)
+			       {
+			    	   player.sendMessage(temp.getString());
+			       }
+			       */
+				
+				   /*
+			       for(int i = 0; i < deathList.size(); i++)
+			       {
+			    	   player.sendMessage(deathList.get(i).getName());
+			       }
+			       */
+				
 			}
 			else
 			{
