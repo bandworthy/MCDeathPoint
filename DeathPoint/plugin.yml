@@ -1,6 +1,6 @@
 name: DeathPoint
 main: net.fantastisk.deathpoint.DeathPoint
-version: 0.3
+version: 0.4
 author: Shane Drobnick
 commands: 
    died:

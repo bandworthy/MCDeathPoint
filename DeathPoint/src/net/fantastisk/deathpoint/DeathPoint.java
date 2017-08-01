@@ -38,6 +38,8 @@ public class DeathPoint extends JavaPlugin implements Listener
 	       //creating death object
 	       DeathObject death = new DeathObject(player.getName(),playerLocation[0],playerLocation[1],playerLocation[2]);
 	       
+	       
+	       // check if deathList is 5 or more remove the oldest
 	       if ( deathList.size() >= 5)
 	       {
 	    	   deathList.remove(0);
