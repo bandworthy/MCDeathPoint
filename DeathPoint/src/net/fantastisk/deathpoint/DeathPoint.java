@@ -37,6 +37,11 @@ public class DeathPoint extends JavaPlugin implements Listener
 	       
 	       //creating death object
 	       DeathObject death = new DeathObject(player.getName(),playerLocation[0],playerLocation[1],playerLocation[2]);
+	       
+	       if ( deathList.size() >= 5)
+	       {
+	    	   deathList.remove(0);
+	       }
 	       deathList.add(death);
 	       //sendtoConsole("DeathList has: "+deathList.size()+" Entrys");
 
